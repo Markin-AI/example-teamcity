@@ -33,5 +33,5 @@ public class WelcomerTest {
 	@Test
 	public void welcomerSaysHunterwho() {
     	assertThat(welcomer.sayHunterwho(), containsString("hunter"));
-}
+	}
 }
