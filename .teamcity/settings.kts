@@ -43,6 +43,20 @@ object Build : BuildType({
         target/plaindoll-0.0.3.jar
     """.trimIndent()
     publishArtifacts = PublishMode.SUCCESSFUL
+
+    steps {
+        maven {
+            name = "Maven 2"
+            id = "Maven2_1"
+
+            conditions {
+                contains("teamcity.build.branch", "master")
+            }
+            goals = "clean deploy"
+            runnerArgs = "-Dmaven.test.failure.ignore=true"
+            userSettingsSelection = "settings.xml"
+        }
+    }
 })
 
 object Buidl : Template({
